@@ -1,4 +1,4 @@
-﻿//транспонированная матрица
+﻿
 #include<iostream>
 #include <cstdlib>
 #include "matrix.h"
@@ -6,22 +6,26 @@ using namespace std;
 int main()
 {
 	int n;
-	int m;
 	cin >> n;
-	cin >> m;
-	if (n <= 0 || m <= 0)
+	if (n <= 0)
 		cout << "Error matr1";
 	else {
-		int** matr1 = new int* [n];
+		float** matr1 = new float* [n];
 		for (int i = 0; i < n; i++) {
-			matr1[i] = new int[m];
+			matr1[i] = new float[n];
 		}
 		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
+			for (int j = 0; j < n; j++) {
 				cin >> matr1[i][j];
 			}
 		}
-		obr(matr1, n, m);
+		obr(matr1, n);
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				cout << matr1[i][j] << "   ";
+			}
+			cout << endl;
+		}
 		for (int i = 0; i < n; i++) {
 			delete[] matr1[i];
 		}
@@ -29,23 +33,26 @@ int main()
 	}
 	int k;
 	cin >> k ;
-	int l;
-	cin >> l;
-	if (k <= 0 || l <= 0) {
+	if (k <= 0) {
 		cout << "Error matr2";
 	}
 	else {
-		float** matr2 = new float* [k];
+		double** matr2 = new double* [k];
 		for (int i = 0; i < k; i++) {
-			matr2[i] = new float[l];
+			matr2[i] = new double[k];
 		}
 		for (int i = 0; i < k; i++) {
-			for (int j = 0; j < l; j++) {
+			for (int j = 0; j < k; j++) {
 				cin >> matr2[i][j];
 			}
 		}
-		obr(matr2, k, l);
-
+		obr(matr2, k);
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				cout << matr2[i][j] << "   ";
+			}
+			cout << endl;
+		}
 		for (int i = 0; i < k; i++) {
 			delete[] matr2[i];
 		}
