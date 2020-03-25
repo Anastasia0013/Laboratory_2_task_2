@@ -12,7 +12,7 @@ void obr(float** matr, int n)
 	}
 	else{
 		if (n == 2) {
-			float e = matr[1][1];
+			float e = matr[0][0];
 			matr[0][0] = matr[1][1] / A;
 			matr[1][1] = e / A;
 			matr[1][0] = -matr[1][0] / A;
@@ -46,7 +46,7 @@ void obr(float** matr, int n)
 			}
 			else {
 				if (n == 1)
-					matr[0][0] / A;
+					matr[0][0] /= A;
 			}
 		}
 	}
@@ -58,23 +58,28 @@ void obr(double** matr, int n)
 	if (A == 0) {
 		cout << "Error determinant" << endl;
 	}
-	else{
+	else {
 		if (n == 2) {
 			double e = matr[0][0];
 			matr[0][0] = matr[1][1] / A;
 			matr[1][1] = e / A;
 			matr[1][0] = -matr[1][0] / A;
 			matr[0][1] = -matr[0][1] / A;
+
 		}
 		else {
 			if (n == 3) {
-				double** matr1 = new double* [n];
+
+				float** matr1 = new float* [n];
 				for (int i = 0; i < n; i++) {
-					matr1[i] = new double[n];
+					matr1[i] = new float[n];
 				}
+
 				for (int i = 0; i < n; i++) {
 					for (int j = 0; j < n; j++) {
-						matr1[i][j] = pow((-1),i+j)*del(matr, n, i, j);
+
+						float k = del(matr, n, i, j);
+						matr1[i][j] = pow((-1), i + j) * k;
 					}
 				}
 				for (int i = 0; i < n; i++) {
@@ -89,7 +94,7 @@ void obr(double** matr, int n)
 			}
 			else {
 				if (n == 1)
-					matr[0][0] / A;
+					matr[0][0] /= A;
 			}
 		}
 	}
